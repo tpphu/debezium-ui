@@ -98,6 +98,9 @@ services:
             docker-kafka-server:
               properties:
                 bootstrap.servers: "dbzui-kafka:9092"
+              connect:
+                - name: dbzui-connect
+                  url: "http://dbzui-connect:8083"
     networks:
       - dbzui-network
 networks:
