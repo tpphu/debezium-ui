@@ -87,6 +87,19 @@ services:
       - dbzui-connect
     networks:
       - dbzui-network
+  kafka-ui:
+    image: tchiotludo/akhq 
+    ports:
+      - "9000:8080"
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            docker-kafka-server:
+              properties:
+                bootstrap.servers: "dbzui-kafka:9092"
+    networks:
+      - dbzui-network
 networks:
   dbzui-network:
     external: false
